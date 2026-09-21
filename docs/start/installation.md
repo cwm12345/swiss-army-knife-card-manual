@@ -218,8 +218,11 @@ sak_user_templates:
 !!! Info "The supplied `sak_templates.yaml` file contains a wildcard include for the `templates` folder."
     So ANY template you add in that folder will be automatically included. You don't have to change this file!
 
-**:octicons-check-circle-16: Step 2c:** Add some files to `configuration.yaml`
-As long as this card is not a bundle, you have to manually add some references in the `cors_allowed_origins` defintion of the `configuration.yaml` file:
+!!! Success "As of the Lit 3 upgrade, the card is a self-contained bundle and Step 2c below is no longer needed"
+    Older releases loaded `lit-html` from the unpkg.com CDN at runtime, which required the `cors_allowed_origins` entries below. Since the Lit 3 migration, Lit is bundled directly into `swiss-army-knife-card.js`, so the card no longer makes any runtime requests to unpkg.com. If you're on a current release, skip Step 2c.
+
+**:octicons-check-circle-16: Step 2c (older, pre-bundle releases only):** Add some files to `configuration.yaml`
+If you're running an older, non-bundled release of the card, you have to manually add some references in the `cors_allowed_origins` defintion of the `configuration.yaml` file:
 ```yaml title="configuration.yaml"
 http:
   cors_allowed_origins:
